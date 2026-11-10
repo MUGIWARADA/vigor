@@ -1,0 +1,341 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/*
+ * Vigor design system
+ * "Volt Monochrome": neutral black/charcoal surfaces (dark) or clean whites
+ * (light), with ONE volt accent used selectively — selected tabs, active nav,
+ * focus, key numbers. Structure (borders, shadows) stays neutral so volt
+ * always means "this is selected". Theme = the same CSS variables with
+ * values swapped under `html.light` (Tailwind v4 CSS-first configuration).
+ */
+@theme {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Base surfaces (neutral black → charcoal ramp — no blue tint) */
+  --color-ink-950: #0a0a0b;
+  --color-ink-900: #101012;
+  --color-ink-850: #141416;
+  --color-ink-800: #1b1b1f;
+  --color-ink-750: #212126;
+  --color-ink-700: #2a2a30;
+  --color-ink-600: #3a3a42;
+  --color-ink-500: #52525b;
+
+  /* Lines / borders (structural — always neutral) */
+  --color-line: #232329;
+  --color-line-strong: #35353e;
+
+  /* Foreground */
+  --color-fg: #fafafa;
+  --color-fg-muted: #a1a1aa;
+  --color-fg-faint: #71717a;
+
+  /* Accent — volt, used ONLY for selection/focus/key figures */
+  --color-accent-200: #efffb4;
+  --color-accent-300: #e4ff70;
+  --color-accent-400: #d4f93a;
+  --color-accent-500: #bfef19;
+  --color-accent-600: #94c40b;
+  --color-accent-700: #6e9407;
+
+  /* Content drawn ON a bright fill (accent buttons etc.) — stays near-black
+     in both modes, unlike ink-950 which is the page background. */
+  --color-on-bright: #171203;
+
+  /* Semantic */
+  --color-positive: #2ee06f;
+  --color-warning: #ffb020;
+  --color-negative: #ff5c6c;
+  --color-info: #4cc3ff;
+
+  /* Position colour coding */
+  --color-pos-gk: #f5a524;
+  --color-pos-df: #4cb8ff;
+  --color-pos-mf: #3ed97e;
+  --color-pos-fw: #ff7b92;
+
+  /* Pitch */
+  --color-pitch-turf: #0e3226;
+  --color-pitch-turf-alt: #113a2c;
+  --color-pitch-line: rgba(250, 250, 250, 0.5);
+
+  /* Section / category tints. Used as low-opacity fills for panel headers,
+     nav groups and chips, so colour carries meaning without becoming
+     structure. Volt stays the only "selected" colour. */
+  --color-tint-mint: #34d399;
+  --color-tint-sky: #38bdf8;
+  --color-tint-lilac: #a78bfa;
+  --color-tint-amber: #fbbf24;
+  --color-tint-rose: #fb7185;
+  --color-tint-teal: #2dd4bf;
+
+  /* Data-visualisation palette (series, bars, radar) */
+  --color-chart-1: #34d399;
+  --color-chart-2: #38bdf8;
+  --color-chart-3: #a78bfa;
+  --color-chart-4: #fbbf24;
+  --color-chart-5: #fb7185;
+  --color-chart-6: #2dd4bf;
+}
+
+html {
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------ */
+/* Light theme — "Banana Paper".                                      */
+/*                                                                    */
+/* Reference palette: banana yellow #FFE135 (with the #D8BF00 /        */
+/* #9D8B00 steps from the standard banana scale) on a warm white      */
+/* paper, deep charcoal ink, and nothing else doing structural work.  */
+/* The rule is one accent, used the way a professional dashboard      */
+/* uses it: interactive state, focus, and the number that matters.    */
+/* Paper carries the page, white carries the cards, the banana never  */
+/* fills a large surface — at 100% saturation a big yellow field is    */
+/* unreadable, so it lives in washes under 8% and in solid chips.     */
+/* ------------------------------------------------------------------ */
+html.light {
+  color-scheme: light;
+
+  /* Surfaces: warm paper page, true-white cards. */
+  --color-ink-950: #fdfbf2;
+  --color-ink-900: #ffffff;
+  --color-ink-850: #ffffff;
+  --color-ink-800: #fbf7e6;
+  --color-ink-750: #f6f0d8;
+  --color-ink-700: #ece4c6;
+  --color-ink-600: #b8ac86;
+  --color-ink-500: #8b8062;
+
+  --color-line: #e7dfc6;
+  --color-line-strong: #d3c9a8;
+
+  --color-fg: #1a170c;
+  --color-fg-muted: #55503c;
+  --color-fg-faint: #7d765f;
+
+  /* Banana scale. 500 is the solid chip colour; 300/400 are the readable
+     text and focus values on white (a pure #FFE135 as text fails contrast
+     badly, so words use the deep end of the same ramp). */
+  --color-accent-200: #fff6c2;
+  --color-accent-300: #6f6100;
+  --color-accent-400: #877400;
+  --color-accent-500: #ffe135;
+  --color-accent-600: #d8bf00;
+  --color-accent-700: #9d8b00;
+
+  --color-on-bright: #1a1500;
+
+  /* Status colour has to survive a warm white page and never compete with
+     the banana: desaturated, deeper, distinguishable from the accent. */
+  --color-positive: #0b7a4b;
+  --color-warning: #b26a08;
+  --color-negative: #c81e45;
+  --color-info: #1f5fbf;
+
+  --color-pos-gk: #b26a08;
+  --color-pos-df: #1f5fbf;
+  --color-pos-mf: #0b7a4b;
+  --color-pos-fw: #c81e45;
+
+  /* Pitch stays turf dark in daylight: a pale pitch would lose the players. */
+  --color-pitch-line: rgba(26, 23, 12, 0.45);
+
+  --color-tint-mint: #0b7a4b;
+  --color-tint-sky: #1f5fbf;
+  --color-tint-lilac: #6a4fc7;
+  --color-tint-amber: #b26a08;
+  --color-tint-rose: #c81e45;
+  --color-tint-teal: #0f766e;
+
+  /* Series palette: banana first, then four hues that sit beside it without
+     turning the charts into a fruit bowl. */
+  --color-chart-1: #d8bf00;
+  --color-chart-2: #1f5fbf;
+  --color-chart-3: #0f766e;
+  --color-chart-4: #b26a08;
+  --color-chart-5: #c81e45;
+  --color-chart-6: #6a4fc7;
+}
+
+body {
+  @apply bg-ink-950 text-fg font-sans antialiased;
+  font-feature-settings: "cv05", "ss01";
+}
+
+/*
+ * The daylight wash is banana, and only banana: a warm glow at the top of the
+ * page that fades into paper. Sections do not get their own hue any more —
+ * three competing tints is what made the old light theme read as pastel
+ * rather than professional. The section accent now lives in the navigation
+ * dot and the eyebrow labels, at full strength, where it means something.
+ */
+html.light body {
+  background-image:
+    radial-gradient(900px 420px at 12% -8%, color-mix(in oklab, var(--color-accent-500) 26%, transparent), transparent 70%),
+    radial-gradient(760px 380px at 92% -4%, color-mix(in oklab, var(--color-accent-600) 14%, transparent), transparent 72%),
+    linear-gradient(180deg, #fffdf4 0%, #fdfbf2 38%, #fbf8ec 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Sidebar and header pick up the same warm paper, one step deeper. */
+html.light .app-sidebar {
+  background-image: linear-gradient(180deg, color-mix(in oklab, var(--color-accent-500) 12%, #ffffff), #ffffff 46%, color-mix(in oklab, var(--color-accent-600) 8%, #ffffff));
+}
+
+html.light .app-header {
+  background-image: linear-gradient(90deg, color-mix(in oklab, var(--color-accent-500) 16%, #ffffff), #ffffff 58%, color-mix(in oklab, var(--color-accent-500) 8%, #ffffff));
+}
+
+/* Panel surface: white card on paper, with a whisper of banana in the corner. */
+html.light .panel-surface {
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    168deg,
+    color-mix(in oklab, var(--color-accent-500) 7%, transparent),
+    transparent 34%,
+    color-mix(in oklab, var(--color-accent-600) 5%, transparent)
+  );
+}
+
+/* Metric bars: banana into deep gold. One ramp, so the bar length stays the
+   only thing the eye has to read. */
+html.light .metric-bar {
+  background-image: linear-gradient(90deg, var(--color-accent-600), var(--color-accent-500) 58%, var(--color-accent-700));
+  background-color: transparent;
+}
+
+/* Stat values stay ink. A row of six differently coloured numbers is noise;
+   the figure earns the banana only when it is the headline of the tile. */
+html.light .stat-tile > .text-metric > span:first-child {
+  color: var(--color-fg);
+}
+html.light .stat-tile[data-emphasis='true'] > .text-metric > span:first-child {
+  color: var(--color-accent-300);
+}
+
+/* Tables: warm zebra and a banana hover, so long grids are not a white wall. */
+html.light tbody tr:nth-child(even) {
+  background-color: color-mix(in oklab, var(--color-accent-500) 7%, transparent);
+}
+html.light tbody tr:hover {
+  background-color: color-mix(in oklab, var(--color-accent-500) 16%, transparent);
+}
+html.light thead tr {
+  background-color: color-mix(in oklab, var(--color-accent-600) 12%, transparent);
+}
+
+/* Eyebrow labels: ink, not a section hue. */
+html.light .text-label {
+  color: var(--color-fg-faint);
+}
+
+/* Semantic badges keep their meaning but get a touch more body in daylight. */
+html.light .badge-tint {
+  background-color: color-mix(in oklab, currentColor 13%, transparent);
+}
+
+/* Selection and focus: solid banana against ink, the one place it is loud. */
+html.light ::selection {
+  background: color-mix(in oklab, var(--color-accent-500) 70%, transparent);
+  color: var(--color-fg);
+}
+
+/* Colour-coded section headings and icons in the navigation. */
+.nav-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-section-label::before {
+  content: '';
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 999px;
+  background: var(--nav-hue);
+}
+.nav-hue-mint { --nav-hue: var(--color-tint-mint); }
+.nav-hue-sky { --nav-hue: var(--color-tint-sky); }
+.nav-hue-amber { --nav-hue: var(--color-tint-amber); }
+.nav-hue-lilac { --nav-hue: var(--color-tint-lilac); }
+.nav-hue-rose { --nav-hue: var(--color-tint-rose); }
+
+html.light .nav-hue {
+  color: color-mix(in oklab, var(--nav-hue) 82%, var(--color-fg));
+}
+html.light .app-sidebar a:hover svg {
+  color: var(--nav-hue, currentColor);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent-400) 35%, transparent);
+  color: var(--color-fg);
+}
+
+/* Slim, unobtrusive scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-600) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Global focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-accent-400);
+  outline-offset: 2px;
+}
+
+@utility text-label {
+  @apply text-[10px] font-semibold uppercase tracking-[0.14em] text-fg-faint;
+}
+
+@utility text-metric {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Structural panel frame: neutral 1px edge + soft neutral depth shadow.
+ * Deliberately NOT volt — in Volt Monochrome the accent is reserved for
+ * selection, so structure must stay quiet for volt to mean anything.
+ */
+@utility panel-border {
+  border: 1px solid var(--color-line);
+  box-shadow: 0 10px 30px -18px rgb(0 0 0 / 0.55);
+}
+
+html.light .panel-border {
+  border-color: var(--color-line);
+  box-shadow:
+    0 1px 2px -1px rgb(26 23 12 / 0.06),
+    0 12px 30px -22px color-mix(in oklab, var(--color-accent-700) 26%, rgb(26 23 12 / 0.18));
+}
+
+/** Volt glow — selected/active elements and primary actions ONLY. */
+@utility accent-glow {
+  box-shadow: 0 0 16px -4px color-mix(in oklab, var(--color-accent-400) 70%, transparent);
+}
+
+/* Match Preview team drawer: enters from the physical right edge. */
+@keyframes match-drawer-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.match-drawer-panel {
+  animation: match-drawer-in 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .match-drawer-panel { animation: none; }
+}

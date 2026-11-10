@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-preview/
+build/
+PHASE1-PREVIEW.html
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Environment — never commit secrets.
+# Frontend .env may only contain NON-SECRET public values (e.g. VITE_API_BASE_URL).
+.env
+.env.local
+.env.*.local
+
+# Backend (future phases) — local run artefacts
+backend/target/
+backend/.env

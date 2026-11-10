@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "source": {
+    "clip": "clip.mp4",
+    "fps": 20.0,
+    "seconds": 19.9,
+    "players": 23
+  },
+  "pitch": {
+    "length": 105.0,
+    "width": 68.0
+  },
+  "groups": {
+    "defence": {
+      "lineX": 23.01,
+      "advanceX": 12.08,
+      "spreadY": 8.25,
+      "speed": 3.59,
+      "sprintShare": 0.218,
+      "runLength": 8.67,
+      "curvature": 1.055,
+      "players": 9,
+      "samples": 3198
+    },
+    "midfield": {
+      "lineX": 55.32,
+      "advanceX": 17.89,
+      "spreadY": 8.21,
+      "speed": 4.94,
+      "sprintShare": 0.487,
+      "runLength": 20.63,
+      "curvature": 1.039,
+      "players": 6,
+      "samples": 2400
+    },
+    "attack": {
+      "lineX": 63.87,
+      "advanceX": 15.84,
+      "spreadY": 7.67,
+      "speed": 5.08,
+      "sprintShare": 0.507,
+      "runLength": 17.0,
+      "curvature": 1.032,
+      "players": 8,
+      "samples": 1552
+    }
+  },
+  "prototypes": {
+    "defence": [
+      {
+        "dx": -4.36,
+        "dy": -0.25,
+        "length": 4.73,
+        "curvature": 1.059,
+        "duration": 1.14,
+        "share": 0.391
+      },
+      {
+        "dx": 5.55,
+        "dy": 0.35,
+        "length": 6.01,
+        "curvature": 1.053,
+        "duration": 1.39,
+        "share": 0.283
+      },
+      {
+        "dx": -13.6,
+        "dy": -1.18,
+        "length": 14.6,
+        "curvature": 1.053,
+        "duration": 2.91,
+        "share": 0.174
+      },
+      {
+        "dx": 15.97,
+        "dy": 1.37,
+        "length": 16.93,
+        "curvature": 1.05,
+        "duration": 3.44,
+        "share": 0.152
+      }
+    ],
+    "midfield": [
+      {
+        "dx": -18.28,
+        "dy": -1.53,
+        "length": 19.16,
+        "curvature": 1.043,
+        "duration": 3.4,
+        "share": 0.538
+      },
+      {
+        "dx": 18.21,
+        "dy": -0.3,
+        "length": 19.02,
+        "curvature": 1.034,
+        "duration": 3.31,
+        "share": 0.269
+      },
+      {
+        "dx": 25.45,
+        "dy": 4.46,
+        "length": 26.75,
+        "curvature": 1.035,
+        "duration": 4.45,
+        "share": 0.154
+      },
+      {
+        "dx": 27.05,
+        "dy": -0.58,
+        "length": 28.08,
+        "curvature": 1.038,
+        "duration": 4.65,
+        "share": 0.038
+      }
+    ],
+    "attack": [
+      {
+        "dx": -1.75,
+        "dy": -0.57,
+        "length": 5.89,
+        "curvature": 1.036,
+        "duration": 1.1,
+        "share": 0.35
+      },
+      {
+        "dx": -20.41,
+        "dy": -1.14,
+        "length": 21.19,
+        "curvature": 1.03,
+        "duration": 3.28,
+        "share": 0.3
+      },
+      {
+        "dx": 26.09,
+        "dy": 2.88,
+        "length": 27.01,
+        "curvature": 1.028,
+        "duration": 4.32,
+        "share": 0.25
+      },
+      {
+        "dx": 17.41,
+        "dy": 1.01,
+        "length": 18.24,
+        "curvature": 1.034,
+        "duration": 3.25,
+        "share": 0.1
+      }
+    ]
+  },
+  "notes": {
+    "frame": "positions are in an attacking frame: ax grows toward the goal a side attacks, ay toward its left touchline",
+    "lines": "defence/midfield/attack are inferred by clustering mean longitudinal position, not supplied by the clip"
+  }
+}

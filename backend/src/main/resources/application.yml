@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: touchline-backend
+
+  datasource:
+    url: ${VIGOR_DB_URL:jdbc:postgresql://localhost:5432/vigor}
+    username: ${VIGOR_DB_USER:vigor_app}
+    password: ${VIGOR_DB_PASSWORD:change-me}
+
+  jpa:
+    # The schema is owned by Flyway migrations — Hibernate never creates or drops it.
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  jackson:
+    # Optional fields (secondaryPosition, x, y, value, note, ...) are omitted from
+    # JSON instead of being sent as null — the frontend treats missing as absent.
+    default-property-inclusion: non_null
+
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  port: ${VIGOR_PORT:8080}
+  error:
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+touchline:
+  cors:
+    # Comma-separated list of allowed browser origins (frontend dev server by default).
+    allowed-origins: ${VIGOR_CORS_ORIGINS:http://localhost:5173}
+  football-data:
+    # Real-data proxy (Phase 4a). The API token lives ONLY in the environment —
+    # never in source control, never in the browser bundle.
+    base-url: ${FOOTBALL_DATA_BASE_URL:https://api.football-data.org/v4}
+    token: ${FOOTBALL_DATA_TOKEN:}
+    # In-memory response cache: refreshing the UI does not re-spend the
+    # 10-requests-per-minute free-tier budget.
+    cache-ttl-seconds: ${FOOTBALL_DATA_CACHE_TTL:300}
+    # Whitelist of competition codes the proxy will serve. Verified 2026-10 on
+    # a free token: PL/PD/SA/BL1/FL1/CL are accessible; EL and CoC return 403.
+    competition-codes: ${FOOTBALL_DATA_COMPETITIONS:PL,PD,SA,BL1,FL1,CL}

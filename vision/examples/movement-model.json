@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "source": {
+    "clip": "clip.mp4",
+    "errorBefore": 0.504,
+    "errorAfter": 0.422,
+    "matches": 61,
+    "seconds": 19.9
+  },
+  "lines": {
+    "defence": {
+      "depthM": -2,
+      "widthScale": 1,
+      "target": {
+        "lineX": 23.01,
+        "advanceX": 12.08,
+        "spreadY": 8.25,
+        "speed": 3.59,
+        "sprintShare": 0.218,
+        "runLength": 8.67,
+        "curvature": 1.055,
+        "players": 9,
+        "samples": 3198
+      }
+    },
+    "midfield": {
+      "depthM": -8,
+      "widthScale": 1,
+      "target": {
+        "lineX": 55.32,
+        "advanceX": 17.89,
+        "spreadY": 8.21,
+        "speed": 4.94,
+        "sprintShare": 0.487,
+        "runLength": 20.63,
+        "curvature": 1.039,
+        "players": 6,
+        "samples": 2400
+      }
+    },
+    "attack": {
+      "depthM": -8,
+      "widthScale": 0.78,
+      "target": {
+        "lineX": 63.87,
+        "advanceX": 15.84,
+        "spreadY": 7.67,
+        "speed": 5.08,
+        "sprintShare": 0.507,
+        "runLength": 17,
+        "curvature": 1.032,
+        "players": 8,
+        "samples": 1552
+      }
+    }
+  }
+}
